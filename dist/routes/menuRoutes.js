@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const zodValidation_1 = require("../middleware/zodValidation");
+const menuController_1 = require("../controllers/menuController");
+const validations_1 = require("../utils/validations");
+const errorCatch_1 = require("../utils/errors/errorCatch");
+const router = (0, express_1.Router)();
+router.post("/create-menu", (0, zodValidation_1.validateData)(validations_1.createMenuSchema), (0, errorCatch_1.errorCatch)(menuController_1.createMenu));
+router.get("/get-all-menus", (0, errorCatch_1.errorCatch)(menuController_1.getAllMenus));
+router.post("/:menuId/items", (0, zodValidation_1.validateData)(validations_1.addItemToMenuSchema), (0, errorCatch_1.errorCatch)(menuController_1.addItemToMenu));
+exports.default = router;
