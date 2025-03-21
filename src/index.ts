@@ -9,7 +9,7 @@ dotenv.config();
 
 startCronJob();
 const app = express();
-app.use(cors({ origin: "https://deepnetsoft-task-client-vkpv.vercel.app" }));
+app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
 
 app.use("/api/menu", menuRoutes);
